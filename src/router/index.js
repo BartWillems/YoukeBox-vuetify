@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import NowPlaying from '@/components/NowPlaying'
-import Rooms from '@/components/Rooms'
-import Playlist from '@/components/Playlist'
-import AddMusic from '@/components/AddMusic'
-
+import Home from '../components/Home'
+import NowPlaying from '../components/NowPlaying'
+import Rooms from '../components/Rooms'
+import Playlist from '../components/Playlist'
+import AddMusic from '../components/AddMusic'
 
 Vue.use(Router)
 
