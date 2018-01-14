@@ -24,8 +24,9 @@ TARGET := $(TMPDIR)/var/vhosts/youkebox
 package: compile
 	mkdir -p $(TARGET)
 
-	cp -r dist/* $(TARGET)
-	
+    cp ./index.html $(TARGET)/
+	cp -r ./dist $(TARGET)/
+
 	for PKG in deb rpm; do \
 		fpm -s dir -t $$PKG \
 			--name $(NAME) \
@@ -35,7 +36,7 @@ package: compile
 			--chdir $(TMPDIR) \
 			.; \
 	done
-	
+
 	rm -R $(TMPDIR)
 
 clean:
