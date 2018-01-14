@@ -8,9 +8,7 @@
 export default {
     name: 'HelloWorld',
     data () {
-        return {
-            
-        }
+        return {}
     }
 }
 </script>

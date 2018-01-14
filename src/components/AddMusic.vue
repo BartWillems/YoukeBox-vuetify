@@ -1,30 +1,47 @@
 <template>
     <div>
         <v-container fluid grid-list-lg>
-        
+
             <h3>Add Music</h3>
             <v-text-field
                 solo
+                v-model="query"
                 prepend-icon="search"
                 placeholder="Search for great music like Death and Mayhem"
                 :light="true"
+                @keyup.enter="search"
             ></v-text-field>
-            <v-layout style="margin-top: 15px;" wrap>
+
+
+            <v-layout style="margin-top: 15px;" wrap justify-center align-center>
+
+                <!-- Progress -->
+                <v-progress-circular
+                    indeterminate
+                    v-bind:width="3"
+                    v-bind:size="70"
+                    color="red"
+                    v-if="loading === true"
+                    justify-center align-center
+                ></v-progress-circular>
+
+                <!-- Actual Videos -->
                 <v-flex xs12 sm9 md6 lg3 xl3
                     v-for="song in songs"
                     :key="song.id"
                     style="margin-bottom: 10px;"
+                    v-if="loading === false"
                 >
                     <v-card
                         :light="false"
-                        :hover="true" 
+                        :hover="true"
                     >
-                        <v-card-media :src="song.image" height="200px"></v-card-media>
+                        <v-card-media :src="song.snippet.thumbnails.high.url" height="200px"></v-card-media>
                         <v-card-title primary-title>
                             <div>
-                                <h3 class="headline mb-0">{{ song.title }}</h3>
+                                <h3 class="headline mb-0">{{ song.snippet.title }}</h3>
                                 <span class="grey--text">
-                                    <v-icon>access_time</v-icon> {{ song.duration }}
+                                    <v-icon>access_time</v-icon> {{ song.contentDetails.duration }}
                                 </span>
                             </div>
                         </v-card-title>
@@ -34,6 +51,7 @@
                     </v-card>
                 </v-flex>
             </v-layout>
+
         </v-container>
     </div>
 </template>
@@ -43,44 +61,22 @@ export default {
     name: 'AddMusic',
     data () {
         return {
-            songs: [
-                    {
-                        id: '1',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '2',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '3',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '4',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '5',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '6',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }, {
-                        id: '7',
-                        title: 'Kangaroo dink',
-                        duration: '4 minutes 3 seconds',
-                        image: 'https://vuetifyjs.com/static/doc-images/cards/desert.jpg'
-                    }
-            ]
+            loading: false,
+            songs: [],
+            query: '',
+        }
+    },
+    methods: {
+        search () {
+            this.loading = true;
+            this.$http.get('youtube/' + this.query)
+            .then(response => {
+                this.songs = response.body.items;
+            }, response => {
+                console.log(response);
+            }).finally(response => {
+                this.loading = false;
+            });
         }
     }
 }

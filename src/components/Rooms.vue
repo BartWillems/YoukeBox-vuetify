@@ -8,9 +8,14 @@
 export default {
     name: 'Rooms',
     data () {
-        return {
-            
-        }
+        this.$http.get('rooms')
+        .then(response => {
+            console.log(response);
+            return response.body;
+        }, response => {
+            console.log(response);
+        });
+        return {}
     }
 }
 </script>
