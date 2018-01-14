@@ -1,5 +1,7 @@
 <template>
-    <h3>Playlist</h3>
+    <v-container fluid grid-list-lg>
+        <h3>Playlist</h3>
+    </v-container>
 </template>
 
 <script>

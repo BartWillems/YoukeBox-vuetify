@@ -1,5 +1,7 @@
 <template>
-    <h3>Rooms</h3>
+    <v-container fluid grid-list-lg>
+        <h3>Rooms</h3>
+    </v-container>
 </template>
 
 <script>

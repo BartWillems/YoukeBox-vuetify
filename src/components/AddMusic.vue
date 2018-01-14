@@ -1,14 +1,14 @@
 <template>
     <div>
-        <h3>Add Music</h3>
-         <v-text-field
-            solo
-            prepend-icon="search"
-            placeholder="Search for great music like Death and Mayhem"
-            :light="true"
-        ></v-text-field>
-
         <v-container fluid grid-list-lg>
+        
+            <h3>Add Music</h3>
+            <v-text-field
+                solo
+                prepend-icon="search"
+                placeholder="Search for great music like Death and Mayhem"
+                :light="true"
+            ></v-text-field>
             <v-layout style="margin-top: 15px;" wrap>
                 <v-flex xs12 sm9 md6 lg3 xl3
                     v-for="song in songs"

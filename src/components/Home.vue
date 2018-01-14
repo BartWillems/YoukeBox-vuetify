@@ -1,5 +1,7 @@
 <template>
-    <p>Wowie!! This is helloworlds</p>
+    <v-container fluid grid-list-lg>
+        <h3>Home Page</h3>
+    </v-container>
 </template>
 
 <script>
