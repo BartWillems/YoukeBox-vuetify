@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.use(Vuetify)
 Vue.use(VueResource)
 
-Vue.http.options.root = 'http://localhost:8000/api/v1/';
+Vue.http.options.root = 'https://api.youkebox.be/api/v1/';
 
 /* eslint-disable no-new */
 new Vue({
