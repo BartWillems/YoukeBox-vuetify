@@ -60,18 +60,31 @@
 export default {
     name: 'AddMusic',
     data () {
+        let _query = this.$route.query.query ? this.$route.query.query : this.$store.state.addMusic.query;
         return {
             loading: false,
-            songs: [],
-            query: '',
+            songs: this.$store.state.addMusic.videos,
+            query: _query
         }
+    },
+    created() {
+        this.search()
     },
     methods: {
         search () {
+            if ( ! this.$route.query.query && this.query.length > 0 ) {
+                this.$router.push({query: {query: this.query}});
+            }
+            // Don't search again when it doesn't need to
+            if (this.query === '' || this.query === this.$store.state.addMusic.query) return;
+
             this.loading = true;
+            this.$store.state.addMusic.query = this.query;
+
             this.$http.get('youtube/' + this.query)
             .then(response => {
                 this.songs = response.body.items;
+                this.$store.state.addMusic.videos = this.songs;
             }, response => {
                 console.log(response);
             }).finally(response => {

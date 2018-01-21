@@ -18,7 +18,7 @@
         <v-list two-line>
             <div v-for="room in rooms" :key="room.id">
                 <v-list-tile v-bind:key="room.name" @click="subscribe(room.name)">
-                    <v-list-tile-content>
+                    <v-list-tile-content transition="slide-x-transition">
                         <v-list-tile-title v-html="room.name"></v-list-tile-title>
                         <v-list-tile-sub-title v-html="room.description"></v-list-tile-sub-title>
                     </v-list-tile-content>
@@ -51,7 +51,7 @@ export default {
         });
 
         return {
-            rooms: [],
+            rooms: this.$store.state.rooms,
             query: '',
             loading: false,
             roomName: '',

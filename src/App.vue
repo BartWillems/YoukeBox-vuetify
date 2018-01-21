@@ -42,22 +42,21 @@
 
 <script>
 export default {
-  name: "App",
-  data() {
-    return {
-      dark: true,
-      drawer: true,
-      items: [
-        { icon: "play_circle_outline", text: "Now Playing", url: "/playing" },
-        { icon: "store", text: "Music Rooms", url: "/rooms" },
-        { icon: "featured_play_list", text: "Playlist", url: "/playlist" },
-        { icon: "search", text: "Add Music", url: "/music/search" }
-      ]
-    };
-  },
-  props: {
-    source: String
-  }
+    name: "App",
+    data() {
+        return {
+            dark: true,
+            drawer: (this.$vuetify.breakpoint.width < 600) ? false : true,
+            items: [
+                { icon: "store", text: "Music Rooms", url: "/rooms" },
+                { icon: "play_circle_outline", text: "Playlist", url: "/playlist" },
+                { icon: "search", text: "Add Music", url: "/search" }
+            ]
+        };
+    },
+    props: {
+        source: String
+    }
 };
 </script>
 

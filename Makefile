@@ -16,8 +16,8 @@ ARCH = noarch
 all: compile
 
 compile:
-	npm install
-	npm run build
+	yarn install
+	yarn run build
 
 TMPDIR := $(shell mktemp -d)
 TARGET := $(TMPDIR)/var/vhosts/youkebox
