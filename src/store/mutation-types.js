@@ -1,0 +1,13 @@
+//Mutations
+export const YUBO_SET_ROOMS = 'YUBO/SET_ROOMS';
+export const YUBO_SET_PLAYLIST = 'YUBO/SET_PLAYLIST';
+export const YUBO_SET_MUSIC = 'YUBO/SET_MUSIC';
+export const YUBO_SET_QUERY = 'YUBO/SET_QUERY';
+
+//Actions
+export const YUBO_API_REQUEST = 'YUBO/API_REQUEST';
+
+export const YUBO_RELOAD_ROOMS = 'YUBO/RELOAD_ROOMS';
+export const YUBO_RELOAD_PLAYLIST = 'YUBO/RELOAD_PLAYLIST';
+export const YUBO_RELOAD_MUSIC = 'YUBO/RELOAD_MUSIC';
+export const YUBO_RELOAD_QUERY = 'YUBO/RELOAD_QUERY';
